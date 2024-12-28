@@ -15,6 +15,8 @@ Open Browser
 
 Go To Serve Rest Page
     New Page    url=${URL_SERVE_REST}
+    ${title}=    Get Title    ==    Front - ServeRest
+    Log    ${title}
 
 Fill User Data And Register
     Click  css=.btn-link
