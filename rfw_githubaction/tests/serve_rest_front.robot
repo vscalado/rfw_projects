@@ -7,3 +7,4 @@ Login with success
     Open Browser
     Go To Serve Rest Page
     Fill User Data And Register
+    Check User Registered Successfully
