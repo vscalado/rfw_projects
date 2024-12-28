@@ -23,5 +23,6 @@ Fill User Data And Register
     Fill Text    css=input[data-testid='email']    txt=${EMAIL}
     Fill Text    css=input[data-testid='password']    txt=test1234
     Check Checkbox    css=input[data-testid='checkbox']
-    Click    css=button[data-testid='cadastrar']
+    # Click    css=button[data-testid='cadastrar']
+    Click    xpath=//*[@id="root"]//button >> text="Cadastrar"
     Sleep  time_=5s
