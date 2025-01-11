@@ -1,0 +1,9 @@
+name: Run Web Testing Workflow
+run-name: ${{ github.actor }} On Push - Web Tests Run 🚀
+on: [push]
+
+jobs:
+    Test:
+        runs-on: ubuntu-20.04
+        steps:
+            - run: echo "Hello World"
