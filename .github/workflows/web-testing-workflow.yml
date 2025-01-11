@@ -3,7 +3,31 @@ run-name: ${{ github.actor }} On Push - Web Tests Run 🚀
 on: [push]
 
 jobs:
-    Test:
+    web-test:
         runs-on: ubuntu-20.04
         steps:
-            - run: echo "Hello World"
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            
+            - name: Install Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.13'
+
+            - name: Install Node.js 20.17
+              uses: actions/setup-node@v4
+              with:
+                node-version: '20.17'
+            
+            - name: Install Python Dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -U -r requirements.txt
+                sudo npm install @playwright/test
+                sudo npx playwright install-deps
+                rfbrowser init
+            
+            - name: Run RF Web Tests
+              run: |
+                robot -d ./results -v HEADLESS:true \
+                -v BROWSER:chromium ./rfw_githubaction/tests
