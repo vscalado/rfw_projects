@@ -48,7 +48,7 @@ jobs:
 
             - name: Download reports
               if: always()            
-              uses: actions/download-artifact@v1
+              uses: actions/download-artifact@v4
               with:
                 name: results-${{matrix.browser}}
 
