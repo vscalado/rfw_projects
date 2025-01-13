@@ -42,7 +42,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: results-${{ matrix.browser }}
-                path: ./results-${{ matrix.browser }}
+                path: ./results
                 if-no-files-found: ignore
                 retention-days: 2
 
@@ -54,7 +54,7 @@ jobs:
 
             - name: List downloaded files
               if: always()
-              run: ls -R /home/runner/work/rfw_projects/rfw_projects
+              run: ls -lR /home/runner/work/rfw_projects/rfw_projects
               
             - name: Send Report
               if: always()
