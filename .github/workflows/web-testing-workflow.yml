@@ -51,6 +51,7 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: results-${{ matrix.browser }}
+                path: ./results-${{ matrix.browser }}
 
             - name: List downloaded files
               if: always()
