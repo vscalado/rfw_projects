@@ -42,7 +42,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: results-${{ matrix.browser }}
-                path: ./results
+                path: ./results-${{ matrix.browser }}
                 if-no-files-found: ignore
                 retention-days: 2
 
