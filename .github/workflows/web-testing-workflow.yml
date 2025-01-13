@@ -35,13 +35,13 @@ jobs:
             - name: Run RF Web Tests
               run: |
                 robot -d ./results -v HEADLESS:true \
-                -v BROWSER:${{matrix.browser}} ./rfw_githubaction/tests
+                -v BROWSER:${{ matrix.browser }} ./rfw_githubaction/tests
 
             - name: Upload Test Results
               if: always()
               uses: actions/upload-artifact@v4
               with:
-                name: results-${{matrix.browser}}
+                name: results-${{ matrix.browser }}
                 path: ./results
                 if-no-files-found: ignore
                 retention-days: 2
@@ -50,11 +50,16 @@ jobs:
               if: always()            
               uses: actions/download-artifact@v4
               with:
-                name: results-${{matrix.browser}}
+                name: results-${{ matrix.browser }}
 
+            - name: List downloaded files
+              if: always()
+              run: ls -R /home/runner/work/rfw_projects/rfw_projects
+              
             - name: Send Report
+              if: always()
               uses: joonvena/robotframework-reporter-action@v2.5
               with:
-                report_path: results-${{matrix.browser}}
+                report_path: results-${{ matrix.browser }}
                 gh_access_token: ${{ secrets.GITHUB_TOKEN }}
                 show_passed_tests: true
